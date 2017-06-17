@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Spring Boot Ember</title>
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Spring Boot Ember JPA SPA</a>
+        </div>
+        <ul class="navbar-nav nav">
+            <li class="active"><a class="nav-item nav-link" href="#">Home</a></li>
+        </ul>
+    </div>
+</nav>
+
+<script type="text/x-handlebars" data-template-name="application">
+  <div class="container">
+        {{outlet}}
+  </div>
+  </script>
+  <script type="text/x-handlebars" data-template-name="articles">
+    
+    <div class="container">
+
+  
+
+    <div class="row"> 
+    <div class="col-md-6"> 
+       
+  <div class="panel panel-primary"> 
+    <div class="panel-heading">Articles</div>
+
+    <div class="panel-body"> 
+           
+       {{#if articlesPresent}} 
+
+       <p><h2 class="text-success">Number of Articles = {{content.length}}</h2></p>
+
+      <br/>
+      <br/>
+
+          <table class="table table-bordered">
+              <tr class="info text-danger">
+                <th>Title</th>
+                <th>Remove</th>
+              </tr>
+                {{#each article in model}}
+              <tr class="warning">
+                  <td>{{#link-to "article" article}}{{article.title}}{{/link-to}}</td>
+                  <td><a href="#" {{action removeArticle article.id}}>
+                     <img src="img/delete-icon.png" border="0"/></a></td>
+              </tr>
+            {{/each}}
+          </table>
+
+        {{else}}
+             No articles present.
+        {{/if}}
+
+
+        <p class="well text-danger"> {{#link-to "new"}}<img src="img/add-icon.png"/> Add Article{{/link-to}}</p>
+
+
+        {{outlet}}
+
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+  </script>
+  <script type="text/x-handlebars" data-template-name="article">
+
+    <div class="container-fluid">
+
+    <div class="row"> 
+    <div class="col-md-10"> 
+
+    <div class="panel panel-primary"> 
+    <div class="panel-heading">View Article</div>
+
+    <div class="panel-body"> 
+
+        <h2 class="text-success">{{title}}</h2>
+        <p class="text-info">{{body}}</p>
+       
+
+      </div>
+      </div>
+     </div>
+   </div>
+ </div>
+
+  </script>
+  <script type="text/x-handlebars" data-template-name="_articleForm" >
+
+     <div class="row"> 
+    <div class="col-md-6"> 
+
+    <div class="panel panel-primary"> 
+    <div class="panel-heading">Add Article</div>
+
+    <div class="panel-body"> 
+
+      <form class="form-horizontal">
+      <div class="control-group">
+        <label class="control-label" for="latitude">Title</label>
+        <div class="controls">
+          {{view Ember.TextField valueBinding="title"}}
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="longitude">Content</label>
+        <div class="controls">
+          {{view Ember.TextArea valueBinding="body"}}
+        </div>
+      </div>
+    
+    </form>
+
+    </div>
+      </div>
+
+     </div>
+      </div>
+
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="new" >
+
+      {{partial "articleForm"}}
+      <p>
+        <button {{action updateItem this}} class="btn btn-primary">Save</button>
+      </p>
+  </script>
+
+
+  <script src="/js/jquery-1.9.1.js"></script>
+  <script src="/js/handlebars-v1.3.0.js"></script>
+  <script src="/js/ember-1.5.1.js"></script>
+  <script src="/js/ember-data-1.0.0-beta.7.f87cba88.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

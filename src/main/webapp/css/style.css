@@ -1,0 +1,12 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+
+.ember-text-field{
+  width: 300px!important;
+}
+.ember-text-area{
+  min-width: 300px;
+  min-height: 300px;
+}
