@@ -1,2 +1,2 @@
 # SpringBootEmberJPA
-Spring Boot EmberJS JPA MySQL
+Spring Boot EmberJS 1.x JPA MySQL
